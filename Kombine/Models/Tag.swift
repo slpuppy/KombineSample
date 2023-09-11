@@ -13,17 +13,17 @@ struct Tag: Hashable {
     let id: Int
     
     static let allTags: [Tag] = [
-        .init(name: "ACTIVEWEAR", id: 762),
-        .init(name: "LULULEMON", id: 676),
-        .init(name: "VINTAGE", id: 766),
-        .init(name: "Y2K", id: 668),
-        .init(name: "DESIGNER", id: 667),
-        .init(name: "MODERN", id: 666),
-        .init(name: "90S", id: 665),
-        .init(name: "UPCYCLED", id: 664),
-        .init(name: "COTTAGE", id: 663),
-        .init(name: "FAIRY", id: 662),
-        .init(name: "STREETWEAR", id: 661),
+        .init(name: "ACTIVEWEAR", id: 000),
+        .init(name: "LULULEMON", id: 001),
+        .init(name: "VINTAGE", id: 002),
+        .init(name: "Y2K", id: 003),
+        .init(name: "DESIGNER", id: 004),
+        .init(name: "MODERN", id: 005),
+        .init(name: "90S", id: 006),
+        .init(name: "UPCYCLED", id: 007),
+        .init(name: "COTTAGE", id: 008),
+        .init(name: "FAIRY", id: 009),
+        .init(name: "STREETWEAR", id: 010),
     ]
 }
 

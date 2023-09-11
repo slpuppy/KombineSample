@@ -36,11 +36,16 @@ class TagListViewModel {
     
     init() {
         observe()
+        for tag in Tag.allTags {
+                selected[tag] = true
+            }
+            output.send(.updateView(tagsOrder: Tag.allTags, selectedTags: selectedTags))
     }
     
     func transform(input: AnyPublisher<Input, Never>) -> AnyPublisher<Output, Never> {
         input.sink { [unowned self] event in
           switch event {
+          
           case .viewDidLoad:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
                 output.send(.setTags(tags: Tag.allTags))
@@ -53,7 +58,7 @@ class TagListViewModel {
               if let value = selected[tag] {
                   selected[tag] = !value
               } else {
-                  selected[tag] = true
+                  selected.updateValue(false, forKey: tag)
               }
               output.send(.updateView(tagsOrder: tags, selectedTags: selectedTags))
           case .onTagsReorder(newOrder: tags.shuffled()):
@@ -61,7 +66,6 @@ class TagListViewModel {
           default:
               break
           }
-        
         }.store(in: &cancellables)
         return output.eraseToAnyPublisher()
       }

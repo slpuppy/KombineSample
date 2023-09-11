@@ -12,7 +12,7 @@ import CombineCocoa
 class TagListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
     private var tags: [Tag] = []
-    private var likedTags: Set<Int> = []
+    private var selectedTags: Set<Int> = []
     private let viewModel = TagListViewModel()
     private var headerView = TagListHeaderView()
     private var tagListView = TagListView()
@@ -56,7 +56,7 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
                self.tags = tags
              case let .updateView(tags, selected):
                  self.tags = tags
-                 self.likedTags = selected
+                 self.selectedTags = selected
                self.tagListView.reloadData()
              }
            }.store(in: &cancellables)
@@ -66,6 +66,9 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
         tagListView.delegate = self
         tagListView.dataSource = self
         tagListView.dragInteractionEnabled = true
+//        tagListView.dragDelegate = self
+//        tagListView.dropDelegate = self
+        
     }
     
     private func setupSubviews() {
@@ -101,11 +104,14 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TagListItemView") as! TagListItemView
            let tag = tags[indexPath.item]
-           cell.configureCell(tag: tag, isSelected: likedTags.contains(tag.id))
+           cell.configureCell(tag: tag, isSelected: selectedTags.contains(tag.id))
            cell.eventPublisher.sink { [weak self] event in
                self?.output.send(.OnTagsCellEvent(event: .selectDidTap, tag: tag))
            }.store(in: &cell.cancellables)
            return cell
     }
+    
+    
+    
 }
 
