@@ -9,13 +9,24 @@
 /* Begin PBXBuildFile section */
 		755610A82AAE914A004B9D57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610A72AAE914A004B9D57 /* AppDelegate.swift */; };
 		755610AA2AAE914A004B9D57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610A92AAE914A004B9D57 /* SceneDelegate.swift */; };
-		755610AC2AAE914A004B9D57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610AB2AAE914A004B9D57 /* ViewController.swift */; };
-		755610AF2AAE914A004B9D57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755610AD2AAE914A004B9D57 /* Main.storyboard */; };
+		755610AC2AAE914A004B9D57 /* TagListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610AB2AAE914A004B9D57 /* TagListViewController.swift */; };
 		755610B12AAE914B004B9D57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 755610B02AAE914B004B9D57 /* Assets.xcassets */; };
 		755610B42AAE914B004B9D57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755610B22AAE914B004B9D57 /* LaunchScreen.storyboard */; };
 		755610BF2AAE914B004B9D57 /* KombineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610BE2AAE914B004B9D57 /* KombineTests.swift */; };
 		755610C92AAE914B004B9D57 /* KombineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610C82AAE914B004B9D57 /* KombineUITests.swift */; };
 		755610CB2AAE914B004B9D57 /* KombineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610CA2AAE914B004B9D57 /* KombineUITestsLaunchTests.swift */; };
+		755610E42AAE9397004B9D57 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 755610E32AAE9397004B9D57 /* CombineCocoa */; };
+		755610E72AAE93A6004B9D57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 755610E62AAE93A6004B9D57 /* SnapKit */; };
+		755610EF2AAEA9B1004B9D57 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 755610EE2AAEA9B1004B9D57 /* CombineCocoa */; };
+		755610F22AAEA9EB004B9D57 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 755610F12AAEA9EB004B9D57 /* SnapshotTesting */; };
+		755610F42AAEAA04004B9D57 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 755610F32AAEAA04004B9D57 /* CombineCocoa */; };
+		755610F72AAF37EE004B9D57 /* TagListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610F62AAF37EE004B9D57 /* TagListHeaderView.swift */; };
+		755610FA2AAF3804004B9D57 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610F92AAF3804004B9D57 /* TagListView.swift */; };
+		755610FD2AAF3922004B9D57 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610FC2AAF3922004B9D57 /* Colors.swift */; };
+		755611002AAF3A19004B9D57 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610FF2AAF3A19004B9D57 /* UIColor+Extension.swift */; };
+		755611032AAF4EE7004B9D57 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755611022AAF4EE7004B9D57 /* Tags.swift */; };
+		755611052AAF502F004B9D57 /* TagListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755611042AAF502F004B9D57 /* TagListViewModel.swift */; };
+		755611072AAF52B8004B9D57 /* TagListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755611062AAF52B8004B9D57 /* TagListItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +50,7 @@
 		755610A42AAE914A004B9D57 /* Kombine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kombine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		755610A72AAE914A004B9D57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		755610A92AAE914A004B9D57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		755610AB2AAE914A004B9D57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		755610AE2AAE914A004B9D57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		755610AB2AAE914A004B9D57 /* TagListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListViewController.swift; sourceTree = "<group>"; };
 		755610B02AAE914B004B9D57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		755610B32AAE914B004B9D57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		755610B52AAE914B004B9D57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +59,13 @@
 		755610C42AAE914B004B9D57 /* KombineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KombineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		755610C82AAE914B004B9D57 /* KombineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KombineUITests.swift; sourceTree = "<group>"; };
 		755610CA2AAE914B004B9D57 /* KombineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KombineUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		755610F62AAF37EE004B9D57 /* TagListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListHeaderView.swift; sourceTree = "<group>"; };
+		755610F92AAF3804004B9D57 /* TagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
+		755610FC2AAF3922004B9D57 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		755610FF2AAF3A19004B9D57 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		755611022AAF4EE7004B9D57 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		755611042AAF502F004B9D57 /* TagListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListViewModel.swift; sourceTree = "<group>"; };
+		755611062AAF52B8004B9D57 /* TagListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				755610E42AAE9397004B9D57 /* CombineCocoa in Frameworks */,
+				755610E72AAE93A6004B9D57 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				755610EF2AAEA9B1004B9D57 /* CombineCocoa in Frameworks */,
+				755610F22AAEA9EB004B9D57 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				755610F42AAEAA04004B9D57 /* CombineCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +105,7 @@
 				755610BD2AAE914B004B9D57 /* KombineTests */,
 				755610C72AAE914B004B9D57 /* KombineUITests */,
 				755610A52AAE914A004B9D57 /* Products */,
+				755610ED2AAEA9B1004B9D57 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,10 +122,14 @@
 		755610A62AAE914A004B9D57 /* Kombine */ = {
 			isa = PBXGroup;
 			children = (
+				755611022AAF4EE7004B9D57 /* Tags.swift */,
+				755610FE2AAF39ED004B9D57 /* Extensions */,
+				755610FB2AAF390D004B9D57 /* Theme */,
+				755610F52AAF368A004B9D57 /* Views */,
+				755611082AAF59E7004B9D57 /* ViewModels */,
+				755611012AAF44FF004B9D57 /* ViewControllers */,
 				755610A72AAE914A004B9D57 /* AppDelegate.swift */,
 				755610A92AAE914A004B9D57 /* SceneDelegate.swift */,
-				755610AB2AAE914A004B9D57 /* ViewController.swift */,
-				755610AD2AAE914A004B9D57 /* Main.storyboard */,
 				755610B02AAE914B004B9D57 /* Assets.xcassets */,
 				755610B22AAE914B004B9D57 /* LaunchScreen.storyboard */,
 				755610B52AAE914B004B9D57 /* Info.plist */,
@@ -127,6 +154,55 @@
 			path = KombineUITests;
 			sourceTree = "<group>";
 		};
+		755610ED2AAEA9B1004B9D57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		755610F52AAF368A004B9D57 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				755610F62AAF37EE004B9D57 /* TagListHeaderView.swift */,
+				755610F92AAF3804004B9D57 /* TagListView.swift */,
+				755611062AAF52B8004B9D57 /* TagListItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		755610FB2AAF390D004B9D57 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				755610FC2AAF3922004B9D57 /* Colors.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		755610FE2AAF39ED004B9D57 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				755610FF2AAF3A19004B9D57 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		755611012AAF44FF004B9D57 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				755610AB2AAE914A004B9D57 /* TagListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		755611082AAF59E7004B9D57 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				755611042AAF502F004B9D57 /* TagListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +219,10 @@
 			dependencies = (
 			);
 			name = Kombine;
+			packageProductDependencies = (
+				755610E32AAE9397004B9D57 /* CombineCocoa */,
+				755610E62AAE93A6004B9D57 /* SnapKit */,
+			);
 			productName = Kombine;
 			productReference = 755610A42AAE914A004B9D57 /* Kombine.app */;
 			productType = "com.apple.product-type.application";
@@ -161,6 +241,10 @@
 				755610BC2AAE914B004B9D57 /* PBXTargetDependency */,
 			);
 			name = KombineTests;
+			packageProductDependencies = (
+				755610EE2AAEA9B1004B9D57 /* CombineCocoa */,
+				755610F12AAEA9EB004B9D57 /* SnapshotTesting */,
+			);
 			productName = KombineTests;
 			productReference = 755610BA2AAE914B004B9D57 /* KombineTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -179,6 +263,9 @@
 				755610C62AAE914B004B9D57 /* PBXTargetDependency */,
 			);
 			name = KombineUITests;
+			packageProductDependencies = (
+				755610F32AAEAA04004B9D57 /* CombineCocoa */,
+			);
 			productName = KombineUITests;
 			productReference = 755610C42AAE914B004B9D57 /* KombineUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -215,6 +302,11 @@
 				Base,
 			);
 			mainGroup = 7556109B2AAE914A004B9D57;
+			packageReferences = (
+				755610E22AAE9397004B9D57 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+				755610E52AAE93A6004B9D57 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				755610F02AAEA9EB004B9D57 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 755610A52AAE914A004B9D57 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,7 +325,6 @@
 			files = (
 				755610B42AAE914B004B9D57 /* LaunchScreen.storyboard in Resources */,
 				755610B12AAE914B004B9D57 /* Assets.xcassets in Resources */,
-				755610AF2AAE914A004B9D57 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +349,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				755610AC2AAE914A004B9D57 /* ViewController.swift in Sources */,
+				755611002AAF3A19004B9D57 /* UIColor+Extension.swift in Sources */,
+				755610FA2AAF3804004B9D57 /* TagListView.swift in Sources */,
+				755611072AAF52B8004B9D57 /* TagListItemView.swift in Sources */,
+				755610FD2AAF3922004B9D57 /* Colors.swift in Sources */,
+				755610AC2AAE914A004B9D57 /* TagListViewController.swift in Sources */,
+				755611032AAF4EE7004B9D57 /* Tags.swift in Sources */,
 				755610A82AAE914A004B9D57 /* AppDelegate.swift in Sources */,
+				755610F72AAF37EE004B9D57 /* TagListHeaderView.swift in Sources */,
 				755610AA2AAE914A004B9D57 /* SceneDelegate.swift in Sources */,
+				755611052AAF502F004B9D57 /* TagListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +395,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		755610AD2AAE914A004B9D57 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				755610AE2AAE914A004B9D57 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		755610B22AAE914B004B9D57 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -442,7 +532,6 @@
 				INFOPLIST_FILE = Kombine/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +559,6 @@
 				INFOPLIST_FILE = Kombine/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -602,6 +690,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		755610E22AAE9397004B9D57 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
+		755610E52AAE93A6004B9D57 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		755610F02AAEA9EB004B9D57 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		755610E32AAE9397004B9D57 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 755610E22AAE9397004B9D57 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
+		755610E62AAE93A6004B9D57 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 755610E52AAE93A6004B9D57 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		755610EE2AAEA9B1004B9D57 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 755610E22AAE9397004B9D57 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
+		755610F12AAEA9EB004B9D57 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 755610F02AAEA9EB004B9D57 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+		755610F32AAEAA04004B9D57 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 755610E22AAE9397004B9D57 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7556109C2AAE914A004B9D57 /* Project object */;
 }
