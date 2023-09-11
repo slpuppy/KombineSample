@@ -24,7 +24,7 @@
 		755610FA2AAF3804004B9D57 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610F92AAF3804004B9D57 /* TagListView.swift */; };
 		755610FD2AAF3922004B9D57 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610FC2AAF3922004B9D57 /* Colors.swift */; };
 		755611002AAF3A19004B9D57 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755610FF2AAF3A19004B9D57 /* UIColor+Extension.swift */; };
-		755611032AAF4EE7004B9D57 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755611022AAF4EE7004B9D57 /* Tags.swift */; };
+		755611032AAF4EE7004B9D57 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755611022AAF4EE7004B9D57 /* Tag.swift */; };
 		755611052AAF502F004B9D57 /* TagListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755611042AAF502F004B9D57 /* TagListViewModel.swift */; };
 		755611072AAF52B8004B9D57 /* TagListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755611062AAF52B8004B9D57 /* TagListItemView.swift */; };
 /* End PBXBuildFile section */
@@ -63,7 +63,7 @@
 		755610F92AAF3804004B9D57 /* TagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
 		755610FC2AAF3922004B9D57 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		755610FF2AAF3A19004B9D57 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		755611022AAF4EE7004B9D57 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		755611022AAF4EE7004B9D57 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		755611042AAF502F004B9D57 /* TagListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListViewModel.swift; sourceTree = "<group>"; };
 		755611062AAF52B8004B9D57 /* TagListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,12 +122,12 @@
 		755610A62AAE914A004B9D57 /* Kombine */ = {
 			isa = PBXGroup;
 			children = (
-				755611022AAF4EE7004B9D57 /* Tags.swift */,
 				755610FE2AAF39ED004B9D57 /* Extensions */,
 				755610FB2AAF390D004B9D57 /* Theme */,
 				755610F52AAF368A004B9D57 /* Views */,
 				755611082AAF59E7004B9D57 /* ViewModels */,
 				755611012AAF44FF004B9D57 /* ViewControllers */,
+				755611092AAF7830004B9D57 /* Models */,
 				755610A72AAE914A004B9D57 /* AppDelegate.swift */,
 				755610A92AAE914A004B9D57 /* SceneDelegate.swift */,
 				755610B02AAE914B004B9D57 /* Assets.xcassets */,
@@ -201,6 +201,14 @@
 				755611042AAF502F004B9D57 /* TagListViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		755611092AAF7830004B9D57 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				755611022AAF4EE7004B9D57 /* Tag.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,7 +362,7 @@
 				755611072AAF52B8004B9D57 /* TagListItemView.swift in Sources */,
 				755610FD2AAF3922004B9D57 /* Colors.swift in Sources */,
 				755610AC2AAE914A004B9D57 /* TagListViewController.swift in Sources */,
-				755611032AAF4EE7004B9D57 /* Tags.swift in Sources */,
+				755611032AAF4EE7004B9D57 /* Tag.swift in Sources */,
 				755610A82AAE914A004B9D57 /* AppDelegate.swift in Sources */,
 				755610F72AAF37EE004B9D57 /* TagListHeaderView.swift in Sources */,
 				755610AA2AAE914A004B9D57 /* SceneDelegate.swift in Sources */,

@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import Combine
+import CombineCocoa
 
 class TagListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
- 
+  
+    private var tags: [Tag] = []
+    private var likedTags: Set<Int> = []
+    private let viewModel = TagListViewModel()
     private var headerView = TagListHeaderView()
     private var tagListView = TagListView()
+    
+    private let output = PassthroughSubject<TagListViewModel.Input, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews:[
@@ -30,19 +38,34 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
         button.setTitle("Confirm", for: .normal)
         return button
     }()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Colors.bgColor
         setupSubviews()
         setupTableView()
         setupLayout()
+        observe()
+        output.send(.viewDidLoad)
     }
     
+    private func observe() {
+        viewModel.transform(input: output.eraseToAnyPublisher()).sink { [unowned self] event in
+             switch event {
+             case .setTags(let tags):
+               self.tags = tags
+             case let .updateView(tags, selected):
+                 self.tags = tags
+                 self.likedTags = selected
+               self.tagListView.reloadData()
+             }
+           }.store(in: &cancellables)
+         }
+    
     private func setupTableView() {
-        
         tagListView.delegate = self
         tagListView.dataSource = self
+        tagListView.dragInteractionEnabled = true
     }
     
     private func setupSubviews() {
@@ -72,18 +95,17 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Tags.allCases.count
+        return tags.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "TagListItemView") as? TagListItemView {
-            
-            return cell
-        }
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TagListItemView") as! TagListItemView
+           let tag = tags[indexPath.item]
+           cell.configureCell(tag: tag, isSelected: likedTags.contains(tag.id))
+           cell.eventPublisher.sink { [weak self] event in
+               self?.output.send(.OnTagsCellEvent(event: .selectDidTap, tag: tag))
+           }.store(in: &cell.cancellables)
+           return cell
     }
-    
-   
-
 }
 

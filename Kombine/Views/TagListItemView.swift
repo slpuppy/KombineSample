@@ -7,11 +7,24 @@
 
 import UIKit
 import SnapKit
+import Combine
+
+enum TagCellEvent {
+    case selectDidTap
+}
 
 class TagListItemView: UITableViewCell {
     
+    private let eventSubject = PassthroughSubject<TagCellEvent, Never>()
+    var eventPublisher: AnyPublisher<TagCellEvent, Never> {
+        eventSubject.eraseToAnyPublisher()
+    }
+    
+    var cancellables = Set<AnyCancellable>()
+    
     private lazy var checkButton: UIButton = {
         let button = UIButton()
+        button.addTarget(self, action: #selector(heartButtonDidTap(_:)), for: .touchUpInside)
         button.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         return button
     }()
@@ -20,7 +33,7 @@ class TagListItemView: UITableViewCell {
         let label = UILabel()
         label.textColor = Colors.textColor
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.text = "Tag"
+        label.text = Tag(name: "name", id: 768).name
         return label
     }()
     
@@ -32,6 +45,11 @@ class TagListItemView: UITableViewCell {
         return imageView
     }()
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cancellables = Set<AnyCancellable>()
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         setupSubviews()
@@ -41,6 +59,15 @@ class TagListItemView: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func configureCell(tag: Tag, isSelected: Bool) {
+        self.tagLabel.text = tag.name
+        self.checkButton.tintColor = isSelected ? .systemBlue : .systemGray4
+    }
+    
+   @objc func heartButtonDidTap(_ sender: UIButton) {
+        eventSubject.send(.selectDidTap)
+      }
     
     private func setupSubviews() {
         self.contentView.addSubview(checkButton)
