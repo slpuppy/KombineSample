@@ -9,21 +9,22 @@ import UIKit
 import Combine
 import CombineCocoa
 
-class TagListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-  
-    private var tags: [Tag] = []
-    private var selectedTags: Set<Int> = []
-    private let viewModel = TagListViewModel()
-    private var headerView = TagListHeaderView()
-    private var tagListView = TagListView()
+class TagListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate, UITableViewDropDelegate {
     
+    private let viewModel = TagListViewModel()
     private let output = PassthroughSubject<TagListViewModel.Input, Never>()
     private var cancellables = Set<AnyCancellable>()
     
+    private var tags: [Tag] = []
+    private var selectedTags: Set<Int> = []
+    
+    private var headerView = TagListHeaderView()
+    private var tagListView = TagListView()
+    
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews:[
-        headerView,
-        tagListView
+            headerView,
+            tagListView
         ])
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,9 +37,10 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
         button.backgroundColor = Colors.accentColor
         button.layer.cornerRadius = 16
         button.setTitle("Confirm", for: .normal)
+        button.addTarget(self, action: #selector(confirmButtonDidTap(_:)), for: .touchUpInside)
         return button
     }()
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Colors.bgColor
@@ -50,32 +52,40 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     private func observe() {
+        headerView.eventPublisher.sink { [weak self] event in
+            switch event {
+            case .resetDidTap:
+                self?.output.send(.onResetTap)
+            }
+        }.store(in: &cancellables)
+        
         viewModel.transform(input: output.eraseToAnyPublisher()).sink { [unowned self] event in
-             switch event {
-             case .setTags(let tags):
-               self.tags = tags
-             case let .updateView(tags, selected):
-                 self.tags = tags
-                 self.selectedTags = selected
-               self.tagListView.reloadData()
-             }
-           }.store(in: &cancellables)
-         }
+            switch event {
+            case .setTags(let tags):
+                self.tags = tags
+            case let .updateView(tags, selected):
+                self.tags = tags
+                self.selectedTags = selected
+                self.tagListView.reloadData()
+            }
+        }.store(in: &cancellables)
+    }
+    
     
     private func setupTableView() {
+        tagListView.isScrollEnabled = false
         tagListView.delegate = self
         tagListView.dataSource = self
         tagListView.dragInteractionEnabled = true
-//        tagListView.dragDelegate = self
-//        tagListView.dropDelegate = self
-        
+        tagListView.dragDelegate = self
+        tagListView.dropDelegate = self
     }
     
     private func setupSubviews() {
         view.addSubview(vStackView)
         view.addSubview(confirmationButton)
     }
-
+    
     private func setupLayout() {
         
         vStackView.snp.makeConstraints { make in
@@ -97,21 +107,55 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @objc private func confirmButtonDidTap(_ sender: UIButton) {
+        output.send(.onConfirmTap)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tags.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TagListItemView") as! TagListItemView
-           let tag = tags[indexPath.item]
-           cell.configureCell(tag: tag, isSelected: selectedTags.contains(tag.id))
-           cell.eventPublisher.sink { [weak self] event in
-               self?.output.send(.OnTagsCellEvent(event: .selectDidTap, tag: tag))
-           }.store(in: &cell.cancellables)
-           return cell
+        let tag = tags[indexPath.item]
+        cell.configureCell(tag: tag, isSelected: selectedTags.contains(tag.id))
+        cell.eventPublisher.sink { [weak self] event in
+            self?.output.send(.OnTagsCellEvent(event: .selectDidTap, tag: tag))
+        }.store(in: &cell.cancellables)
+        return cell
     }
     
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let tag = tags[indexPath.row]
+        let itemProvider = NSItemProvider(object: NSString(string: "\(tag.id)"))
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.localObject = tag
+        return [dragItem]
+    }
     
+    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+        return true
+    }
     
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+        
+        guard let destinationIndexPath = coordinator.destinationIndexPath else {
+            return
+        }
+        
+        if let tag = coordinator.items.first?.dragItem.localObject as? Tag {
+            var newTagsOrder = tags
+            newTagsOrder.removeAll { $0 == tag }
+            newTagsOrder.insert(tag, at: destinationIndexPath.row)
+            
+            // Notify the view model with the updated order
+            output.send(.onTagsReorder(newOrder: newTagsOrder))
+        }
+        tagListView.reloadData()
+    }
 }
 

@@ -16,6 +16,7 @@ enum TagCellEvent {
 class TagListItemView: UITableViewCell {
     
     private let eventSubject = PassthroughSubject<TagCellEvent, Never>()
+    
     var eventPublisher: AnyPublisher<TagCellEvent, Never> {
         eventSubject.eraseToAnyPublisher()
     }
@@ -24,7 +25,7 @@ class TagListItemView: UITableViewCell {
     
     private lazy var checkButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(heartButtonDidTap(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(selectButtonDidTap(_:)), for: .touchUpInside)
         button.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         return button
     }()
@@ -33,7 +34,6 @@ class TagListItemView: UITableViewCell {
         let label = UILabel()
         label.textColor = Colors.textColor
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.text = Tag(name: "name", id: 768).name
         return label
     }()
     
@@ -65,7 +65,7 @@ class TagListItemView: UITableViewCell {
         self.checkButton.tintColor = isSelected ? .systemBlue : .systemGray4
     }
     
-   @objc func heartButtonDidTap(_ sender: UIButton) {
+   @objc func selectButtonDidTap(_ sender: UIButton) {
         eventSubject.send(.selectDidTap)
       }
     

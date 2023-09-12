@@ -10,11 +10,12 @@ import Combine
 
 class TagListViewModel {
     
-   enum Input {
+    enum Input {
         case viewDidLoad
         case OnTagsCellEvent(event: TagCellEvent, tag:Tag )
         case onTagsReorder(newOrder: [Tag])
         case onResetTap
+        case onConfirmTap
     }
     
     enum Output {
@@ -29,52 +30,65 @@ class TagListViewModel {
     
     var cancellables = Set<AnyCancellable>()
     
+    private var originalTagOrder: [Tag] = []
+    
     private var selectedTags: Set<Int> {
-      let array = selected.filter { $0.value == true }.map { $0.key.id }
-      return Set(array)
+        let array = selected.filter { $0.value == true }.map { $0.key.id }
+        return Set(array)
     }
     
     init() {
         observe()
-        for tag in Tag.allTags {
-                selected[tag] = true
-            }
-            output.send(.updateView(tagsOrder: Tag.allTags, selectedTags: selectedTags))
+        resetSelected()
+        originalTagOrder = Tag.allTags
+        output.send(.updateView(tagsOrder: originalTagOrder, selectedTags: selectedTags))
     }
     
     func transform(input: AnyPublisher<Input, Never>) -> AnyPublisher<Output, Never> {
         input.sink { [unowned self] event in
-          switch event {
-          
-          case .viewDidLoad:
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
-                output.send(.setTags(tags: Tag.allTags))
-                output.send(.updateView(tagsOrder: Tag.allTags, selectedTags: selectedTags))
+            switch event {
+            case .viewDidLoad:
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [unowned self] in
+                    output.send(.setTags(tags: Tag.allTags))
+                    output.send(.updateView(tagsOrder: Tag.allTags, selectedTags: selectedTags))
+                }
+            case .onResetTap:
+                resetSelected()
+                tags = originalTagOrder
+                output.send(.updateView(tagsOrder: tags, selectedTags: selectedTags))
+            case .OnTagsCellEvent(event: .selectDidTap, let tag):
+                if let value = selected[tag] {
+                    selected[tag] = !value
+                } else {
+                    selected.updateValue(false, forKey: tag)
+                }
+                output.send(.updateView(tagsOrder: tags, selectedTags: selectedTags))
+            case .onTagsReorder(let newOrder):
+                tags = newOrder
+                print("Updated tags: \(tags)")
+                output.send(.updateView(tagsOrder: newOrder, selectedTags: selectedTags))
+            case.onConfirmTap:
+                if selectedTags.count >= 3 {
+                    print("Confirmed")
+                } else {
+                    print("Not Enough")
+                }
             }
-          case .onResetTap:
-              selected.removeAll()
-              output.send(.updateView(tagsOrder: Tag.allTags, selectedTags: selectedTags))
-          case .OnTagsCellEvent(event: .selectDidTap, let tag):
-              if let value = selected[tag] {
-                  selected[tag] = !value
-              } else {
-                  selected.updateValue(false, forKey: tag)
-              }
-              output.send(.updateView(tagsOrder: tags, selectedTags: selectedTags))
-          case .onTagsReorder(newOrder: tags.shuffled()):
-              break
-          default:
-              break
-          }
         }.store(in: &cancellables)
         return output.eraseToAnyPublisher()
-      }
+    }
     
     private func observe() {
         $tags.dropFirst().sink { tag in
             print(tag)
         }.store(in: &cancellables)
-}
+    }
+    
+    private func resetSelected(){
+        for tag in Tag.allTags {
+            selected[tag] = true
+        }
+    }
     
     
 }

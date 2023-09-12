@@ -7,8 +7,21 @@
 
 import UIKit
 import SnapKit
+import Combine
+
+enum ListHeaderEvent {
+    case resetDidTap
+}
 
 class TagListHeaderView: UIView {
+    
+    private let eventSubject = PassthroughSubject<ListHeaderEvent, Never>()
+   
+    var eventPublisher: AnyPublisher<ListHeaderEvent, Never> {
+        eventSubject.eraseToAnyPublisher()
+    }
+    
+    var cancellables = Set<AnyCancellable>()
     
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
@@ -26,6 +39,7 @@ class TagListHeaderView: UIView {
         button.layer.cornerRadius = 10
         button.layer.borderColor = Colors.textColor.cgColor
         button.layer.borderWidth = 2
+        button.addTarget(self, action: #selector(resetButtonDidTap(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -40,6 +54,10 @@ class TagListHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func resetButtonDidTap(_ sender: UIButton) {
+         eventSubject.send(.resetDidTap)
+       }
     
     private func setupSubviews() {
         self.addSubview(headerLabel)
