@@ -22,7 +22,6 @@ class TagListItemView: UITableViewCell {
     private lazy var checkButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(selectButtonDidTap(_:)), for: .touchUpInside)
-        button.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         return button
     }()
     
@@ -63,6 +62,7 @@ class TagListItemView: UITableViewCell {
     func configureCell(tag: Tag, isSelected: Bool) {
         self.tagLabel.text = tag.name
         self.checkButton.tintColor = isSelected ? Colors.blueColor : Colors.grayColor
+        self.checkButton.setImage(isSelected ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle"), for: .normal)
     }
     
     private func setupSubviews() {
