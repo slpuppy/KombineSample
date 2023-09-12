@@ -21,6 +21,7 @@ class TagListViewModel {
     enum Output {
         case setTags(tags:[Tag])
         case updateView(tagsOrder:[Tag], selectedTags:Set<Int>)
+        case showAlert(title: String, message: String)
     }
     
     private let output = PassthroughSubject<TagListViewModel.Output, Never>()
@@ -69,9 +70,9 @@ class TagListViewModel {
                 output.send(.updateView(tagsOrder: newOrder, selectedTags: selectedTags))
             case.onConfirmTap:
                 if selectedTags.count >= 3 {
-                    print("Confirmed")
+                    output.send(.showAlert(title: "Confirmation", message:"Tags saved"))
                 } else {
-                    print("Not Enough")
+                    output.send(.showAlert(title: "Not enough tags", message:"Please select at least 3 tags"))
                 }
             }
         }.store(in: &cancellables)

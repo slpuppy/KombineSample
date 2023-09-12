@@ -67,6 +67,9 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.tags = tags
                 self.selectedTags = selected
                 self.tagListView.reloadData()
+            case let .showAlert(title, message):
+                        // Display an alert with the provided title and message
+                        self.presentAlert(title: title, message: message)
             }
         }.store(in: &cancellables)
     }
@@ -109,6 +112,15 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @objc private func confirmButtonDidTap(_ sender: UIButton) {
         output.send(.onConfirmTap)
+    }
+    
+    private func presentAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
