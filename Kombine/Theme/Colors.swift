@@ -8,7 +8,6 @@
 import UIKit
 
 struct Colors {
-    
     static let bgColor = UIColor(hexString:"EFF0F4")
     static let textColor = UIColor(hexString:"323440")
     static let accentColor = UIColor(hexString:"7F50F6")

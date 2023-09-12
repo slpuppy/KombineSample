@@ -68,12 +68,10 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.selectedTags = selected
                 self.tagListView.reloadData()
             case let .showAlert(title, message):
-                        // Display an alert with the provided title and message
-                        self.presentAlert(title: title, message: message)
+                self.presentAlert(title: title, message: message)
             }
         }.store(in: &cancellables)
     }
-    
     
     private func setupTableView() {
         tagListView.isScrollEnabled = false
@@ -116,7 +114,6 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func presentAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         
@@ -163,8 +160,6 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
             var newTagsOrder = tags
             newTagsOrder.removeAll { $0 == tag }
             newTagsOrder.insert(tag, at: destinationIndexPath.row)
-            
-            // Notify the view model with the updated order
             output.send(.onTagsReorder(newOrder: newTagsOrder))
         }
         tagListView.reloadData()

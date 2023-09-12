@@ -36,8 +36,8 @@ class TagListHeaderView: UIView {
         button.setTitle("Reset", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 12)
         button.setTitleColor(Colors.textColor, for: .normal)
-        button.layer.cornerRadius = 10
         button.layer.borderColor = Colors.textColor.cgColor
+        button.layer.cornerRadius = 10
         button.layer.borderWidth = 2
         button.addTarget(self, action: #selector(resetButtonDidTap(_:)), for: .touchUpInside)
         return button
@@ -47,7 +47,7 @@ class TagListHeaderView: UIView {
         super.init(frame: .zero)
         self.backgroundColor = Colors.clearColor
         setupSubviews()
-        setupLayout()
+        setupAutoLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -63,7 +63,7 @@ class TagListHeaderView: UIView {
         self.addSubview(resetButton)
     }
     
-    private func setupLayout() {
+    private func setupAutoLayout() {
         headerLabel.snp.makeConstraints { make in
             make.leading.equalTo(self.snp.leading).offset(20)
             make.top.equalTo(self.snp.top)

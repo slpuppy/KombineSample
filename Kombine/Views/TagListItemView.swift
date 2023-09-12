@@ -65,9 +65,9 @@ class TagListItemView: UITableViewCell {
         self.checkButton.tintColor = isSelected ? .systemBlue : .systemGray4
     }
     
-   @objc func selectButtonDidTap(_ sender: UIButton) {
+    @objc func selectButtonDidTap(_ sender: UIButton) {
         eventSubject.send(.selectDidTap)
-      }
+    }
     
     private func setupSubviews() {
         self.contentView.addSubview(checkButton)
