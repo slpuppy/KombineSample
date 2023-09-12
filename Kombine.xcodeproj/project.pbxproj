@@ -27,6 +27,9 @@
 		755611032AAF4EE7004B9D57 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755611022AAF4EE7004B9D57 /* Tag.swift */; };
 		755611052AAF502F004B9D57 /* TagListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755611042AAF502F004B9D57 /* TagListViewModel.swift */; };
 		755611072AAF52B8004B9D57 /* TagListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755611062AAF52B8004B9D57 /* TagListItemView.swift */; };
+		75655D242AB08E14006C7922 /* ListHeaderEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75655D232AB08E14006C7922 /* ListHeaderEvent.swift */; };
+		75655D262AB08E3B006C7922 /* TagCellEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75655D252AB08E3B006C7922 /* TagCellEvent.swift */; };
+		75655D282AB08F4F006C7922 /* TagListViewController+Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75655D272AB08F4F006C7922 /* TagListViewController+Drop.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		755611022AAF4EE7004B9D57 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		755611042AAF502F004B9D57 /* TagListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListViewModel.swift; sourceTree = "<group>"; };
 		755611062AAF52B8004B9D57 /* TagListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListItemView.swift; sourceTree = "<group>"; };
+		75655D232AB08E14006C7922 /* ListHeaderEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeaderEvent.swift; sourceTree = "<group>"; };
+		75655D252AB08E3B006C7922 /* TagCellEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCellEvent.swift; sourceTree = "<group>"; };
+		75655D272AB08F4F006C7922 /* TagListViewController+Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagListViewController+Drop.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +170,7 @@
 		755610F52AAF368A004B9D57 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				755611102AB00FF1004B9D57 /* Events */,
 				755610F62AAF37EE004B9D57 /* TagListHeaderView.swift */,
 				755610F92AAF3804004B9D57 /* TagListView.swift */,
 				755611062AAF52B8004B9D57 /* TagListItemView.swift */,
@@ -183,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				755610FF2AAF3A19004B9D57 /* UIColor+Extension.swift */,
+				75655D272AB08F4F006C7922 /* TagListViewController+Drop.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -209,6 +217,15 @@
 				755611022AAF4EE7004B9D57 /* Tag.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		755611102AB00FF1004B9D57 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				75655D232AB08E14006C7922 /* ListHeaderEvent.swift */,
+				75655D252AB08E3B006C7922 /* TagCellEvent.swift */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,13 +376,16 @@
 			files = (
 				755611002AAF3A19004B9D57 /* UIColor+Extension.swift in Sources */,
 				755610FA2AAF3804004B9D57 /* TagListView.swift in Sources */,
+				75655D242AB08E14006C7922 /* ListHeaderEvent.swift in Sources */,
 				755611072AAF52B8004B9D57 /* TagListItemView.swift in Sources */,
 				755610FD2AAF3922004B9D57 /* Colors.swift in Sources */,
 				755610AC2AAE914A004B9D57 /* TagListViewController.swift in Sources */,
 				755611032AAF4EE7004B9D57 /* Tag.swift in Sources */,
+				75655D262AB08E3B006C7922 /* TagCellEvent.swift in Sources */,
 				755610A82AAE914A004B9D57 /* AppDelegate.swift in Sources */,
 				755610F72AAF37EE004B9D57 /* TagListHeaderView.swift in Sources */,
 				755610AA2AAE914A004B9D57 /* SceneDelegate.swift in Sources */,
+				75655D282AB08F4F006C7922 /* TagListViewController+Drop.swift in Sources */,
 				755611052AAF502F004B9D57 /* TagListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

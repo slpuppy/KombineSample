@@ -73,14 +73,7 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
         }.store(in: &cancellables)
     }
     
-    private func setupTableView() {
-        tagListView.isScrollEnabled = false
-        tagListView.delegate = self
-        tagListView.dataSource = self
-        tagListView.dragInteractionEnabled = true
-        tagListView.dragDelegate = self
-        tagListView.dropDelegate = self
-    }
+    // MARK: UI Setup Methods:
     
     private func setupSubviews() {
         view.addSubview(vStackView)
@@ -108,6 +101,17 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    // MARK: Private Methods:
+    
+    private func setupTableView() {
+        tagListView.isScrollEnabled = false
+        tagListView.delegate = self
+        tagListView.dataSource = self
+        tagListView.dragInteractionEnabled = true
+        tagListView.dragDelegate = self
+        tagListView.dropDelegate = self
+    }
+    
     @objc private func confirmButtonDidTap(_ sender: UIButton) {
         output.send(.onConfirmTap)
     }
@@ -119,6 +123,8 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         present(alertController, animated: true, completion: nil)
     }
+    
+    // MARK: Table View Delegate Methods:
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tags.count
@@ -140,14 +146,6 @@ class TagListViewController: UIViewController, UITableViewDelegate, UITableViewD
         let dragItem = UIDragItem(itemProvider: itemProvider)
         dragItem.localObject = tag
         return [dragItem]
-    }
-    
-    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
-        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }
     
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {

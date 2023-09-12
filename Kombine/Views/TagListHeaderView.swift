@@ -9,10 +9,6 @@ import UIKit
 import SnapKit
 import Combine
 
-enum ListHeaderEvent {
-    case resetDidTap
-}
-
 class TagListHeaderView: UIView {
     
     private let eventSubject = PassthroughSubject<ListHeaderEvent, Never>()

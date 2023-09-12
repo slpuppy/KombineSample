@@ -9,10 +9,6 @@ import UIKit
 import SnapKit
 import Combine
 
-enum TagCellEvent {
-    case selectDidTap
-}
-
 class TagListItemView: UITableViewCell {
     
     private let eventSubject = PassthroughSubject<TagCellEvent, Never>()
@@ -41,7 +37,7 @@ class TagListItemView: UITableViewCell {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "line.3.horizontal")
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .systemGray3
+        imageView.tintColor = Colors.grayColor
         return imageView
     }()
     
@@ -60,13 +56,13 @@ class TagListItemView: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(tag: Tag, isSelected: Bool) {
-        self.tagLabel.text = tag.name
-        self.checkButton.tintColor = isSelected ? .systemBlue : .systemGray4
-    }
-    
     @objc func selectButtonDidTap(_ sender: UIButton) {
         eventSubject.send(.selectDidTap)
+    }
+    
+    func configureCell(tag: Tag, isSelected: Bool) {
+        self.tagLabel.text = tag.name
+        self.checkButton.tintColor = isSelected ? Colors.blueColor : Colors.grayColor
     }
     
     private func setupSubviews() {

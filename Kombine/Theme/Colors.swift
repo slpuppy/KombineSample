@@ -12,5 +12,7 @@ struct Colors {
     static let textColor = UIColor(hexString:"323440")
     static let accentColor = UIColor(hexString:"7F50F6")
     static let whiteColor = UIColor(hexString: "FFFFFF")
+    static let blueColor = UIColor.systemBlue
+    static let grayColor = UIColor.systemGray3
     static let clearColor = UIColor.clear
 }
